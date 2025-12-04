@@ -6,11 +6,19 @@ Whitepaper
 Author: Vamsha Shetty w CoPi | Senior Technical Lead
 Date: December 3, 2025
 Location: Bengaluru
+
+<img width="754" height="314" alt="image" src="https://github.com/user-attachments/assets/5199215a-6011-418e-9688-ad89b4e55cd4" />
+
+
 Abstract
 This whitepaper explores practical applications of deep learning frameworks—TensorFlow and PyTorch—in space science and geoscience for satellite image classification and land cover mapping. The primary objective is to identify natural sources of clean water (e.g., rivers, lakes, wetlands, snow/ice-fed springs) directly from remote sensing data, without focusing on post-filtration or treatment parameters. We present data sources, preprocessing pipelines, model architectures, training and evaluation strategies, case studies, deployment patterns, and future directions tailored to scalable geospatial analysis.
+
+
 1. Introduction
 Access to clean water is a foundational requirement for health, agriculture, and sustainable development. Rapid urbanization, climate variability, and land-use changes complicate the task of locating pristine water sources. Remote sensing offers synoptic, repeatable observations over large areas, enabling the detection and monitoring of surface water bodies and related hydrological features. Deep learning has emerged as a powerful approach for discriminating water from other land cover types, learning complex spectral–spatial patterns across multispectral and radar datasets, and scaling inference to national or global extents.
 This paper focuses on the use of convolutional neural networks (CNNs) and modern segmentation architectures implemented in TensorFlow and PyTorch to identify likely clean water sources. We emphasize optical multispectral sensors (e.g., Sentinel-2, Landsat) and discuss augmentation with radar (SAR) for all-weather robustness. Our scope excludes water quality treatment or post-processing chemistry; we instead concentrate on detecting naturally occurring water sources and differentiating them from anthropogenic artifacts.
+
+
 2. Data Sources
 Key satellite platforms and products used for water detection:
 - Sentinel-2 MSI: 10–60 m resolution with visible (RGB), NIR, and SWIR bands; ideal for water vs. land discrimination and turbidity proxies.
@@ -27,6 +35,8 @@ Key satellite platforms and products used for water detection:
 - Radiometric normalization and per-band scaling.
 - Spatial alignment and resampling among sensors.
 - Tiling and patch generation for model training.
+
+  
 3. Methodology
 We explore two complementary approaches: TensorFlow-centric and PyTorch-centric pipelines for water detection and land cover mapping.
 3.1 TensorFlow Applications
@@ -178,17 +188,22 @@ criterion = nn.CrossEntropyLoss()
 #     loss.backward()
 #     optimizer.step()
 
+
 4. Training and Evaluation
 - Split data into train/validation/test by geographic tiles to avoid spatial leakage.
 - Use class-balanced sampling; water pixels are often minority in large scenes.
 - Metrics: Intersection-over-Union (IoU) for water class, F1-score, Precision/Recall, and boundary accuracy to quantify shoreline delineation.
 - Employ multi-temporal training (seasonal stacks) to improve robustness to phenology and hydrological variability.
 - Data augmentation: random rotations, flips, brightness/contrast jitter per band, synthetic cloud overlays, and cutout to simulate occlusions.
+
+  
 5. Case Studies
 5.1 Himalayan Glacier-Fed Water Detection (PyTorch): Train DeepLab-like models on summer vs. winter optical scenes plus Sentinel-1 SAR to distinguish snow/ice, proglacial lakes, and meltwater channels. Multi-modal fusion reduces confusion between snow shadows and dark water.
 5.2 Amazon Basin River Network Mapping (TensorFlow): U-Net segmentation on Sentinel-2 mosaics with MNDWI thresholding as weak labels. Post-process predictions with morphological operations to produce connected river graphs for navigation and planning.
 5.3 Urban Reservoir and Wetland Identification (Multispectral Fusion): Combine SWIR with NIR to reduce rooftop/asphalt false positives. Employ object-based filtering to remove small dark features that are unlikely to be water (e.g., parking lots).
-6. Deployment and Scalability
+
+   
+7. Deployment and Scalability
 - Batch inference on cloud GPUs (Azure, AWS, GCP) over tiled datasets stored in cloud object storage (e.g., Cloud-Optimized GeoTIFFs).
 - Use sliding-window inference with overlap to minimize edge artifacts; stitch predictions using weighted blending.
 - Integrate outputs into GIS systems (GeoPackage, PostGIS) for visualization, querying, and downstream decision-making.
@@ -198,13 +213,21 @@ criterion = nn.CrossEntropyLoss()
 - Multi-modal learning: fuse optical + SAR + DEM (topography) to prioritize likely clean sources (elevational springs, glacial lakes) and filter out urban runoff.
 - Uncertainty quantification (MC Dropout or ensembles) to produce confidence maps that aid field validation and resource allocation.
 - Active learning with human-in-the-loop labeling to refine models in novel geographies.
+
+  
 8. Limitations and Ethical Considerations
 - Water detected via remote sensing reflects surface presence and spectral signatures; it does not guarantee potability. Field validation remains essential.
 - Seasonal and atmospheric variability (haze, sun glint) can affect detection; radar helps but introduces its own complexities.
 - Publishing precise locations of pristine water sources may have ecological and social implications; consider access control and responsible disclosure.
+
+<img width="1536" height="1024" alt="Designer (1)" src="https://github.com/user-attachments/assets/aff17e95-a41c-4b63-b801-61230438842f" />
+
+
 9. Conclusion
 TensorFlow and PyTorch provide robust, flexible tooling for large-scale geospatial analysis. Using segmentation architectures (U-Net, DeepLab variants), multispectral inputs, and thoughtful preprocessing, practitioners can accurately delineate natural water sources across diverse terrains. The outlined pipelines and examples demonstrate how to operationalize these methods for monitoring, planning, and sustainability initiatives.
-10. References
+
+
+11. References
 - Sentinel-2 MSI User Guide; Landsat 8/9 OLI Instrument Guides
 - McFeeters, S.K. (1996). The use of the Normalized Difference Water Index (NDWI) in the delineation of open water features.
 - Xu, H. (2006). Modification of normalised difference water index (NDWI) to enhance open water features: A comparison of Landsat imagery.
