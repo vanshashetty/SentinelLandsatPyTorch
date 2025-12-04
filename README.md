@@ -1,7 +1,9 @@
 # SentinelLandsatPyTorch
 
+
 Leveraging Deep Learning Frameworks for Geospatial Analysis: Identifying Natural Sources of Clean Water Using TensorFlow and PyTorch
 Whitepaper
+
 
 Author: Vamsha Shetty w CoPi | Senior Technical Lead
 Date: December 3, 2025
@@ -225,6 +227,8 @@ criterion = nn.CrossEntropyLoss()
 
 9. Conclusion
 TensorFlow and PyTorch provide robust, flexible tooling for large-scale geospatial analysis. Using segmentation architectures (U-Net, DeepLab variants), multispectral inputs, and thoughtful preprocessing, practitioners can accurately delineate natural water sources across diverse terrains. The outlined pipelines and examples demonstrate how to operationalize these methods for monitoring, planning, and sustainability initiatives.
+
+Credits: CoPilot Analysis
 
 
 11. References
