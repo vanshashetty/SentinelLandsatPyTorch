@@ -5,14 +5,17 @@ Leveraging Deep Learning Frameworks for Geospatial Analysis: Identifying Natural
 Whitepaper
 
 
-Author: Vamsha Shetty w CoPi | Senior Technical Lead
+Author: Vamsha Shetty w CoPi | Senior Automation Architect/Sw Test Engineering Mgr
+
 Date: December 3, 2025
+
 Location: Bengaluru
 
 <img width="754" height="314" alt="image" src="https://github.com/user-attachments/assets/5199215a-6011-418e-9688-ad89b4e55cd4" />
 
 
-Abstract
+Abstract -
+
 This whitepaper explores practical applications of deep learning frameworks—TensorFlow and PyTorch—in space science and geoscience for satellite image classification and land cover mapping. The primary objective is to identify natural sources of clean water (e.g., rivers, lakes, wetlands, snow/ice-fed springs) directly from remote sensing data, without focusing on post-filtration or treatment parameters. We present data sources, preprocessing pipelines, model architectures, training and evaluation strategies, case studies, deployment patterns, and future directions tailored to scalable geospatial analysis.
 
 
